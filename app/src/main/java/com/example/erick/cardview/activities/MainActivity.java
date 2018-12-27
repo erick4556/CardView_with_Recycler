@@ -1,4 +1,4 @@
-package com.example.erick.cardview;
+package com.example.erick.cardview.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,10 +6,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.erick.cardview.adapters.Myadapter;
+import com.example.erick.cardview.R;
+import com.example.erick.cardview.models.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(Movie movie, int position) {
                 //Toast.makeText(MainActivity.this,name+" - "+position,Toast.LENGTH_SHORT).show();
                 //Cuando se hace click va eliminar
-                //deletename(position);
+                removemovie(position);
             }
         });
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add_name:
-               // this.addname(0);//0 por que se va añadir el nombre en la parte superior de la vista
+                this.addmovie(0);//0 por que se va añadir el nombre en la parte superior de la vista
                 return true;
 
             default:
@@ -87,19 +89,20 @@ public class MainActivity extends AppCompatActivity {
         }};
     }
 
-   /* private void addname(int position){
-        names.add(position,"New name"+(++counter)); //Se añadel array y la posición que queremos
+    private void addmovie(int position){
+        //Se va poner como predeterminada para otras imágenes
+        movies.add(position,new Movie("New image "+(++counter),R.drawable.ironman)); //Se añadel array y la posición que queremos
         //Se le va decir al adaptador que algo ha cambiado
         mAdapter.notifyItemInserted(position);
         //Hacemos el scroll hacia la posición donde el elemento nuevo se aloja
         mLayoutManager.scrollToPosition(position);
     }
 
-    private void deletename(int position){
-        names.remove(position);
+    private void removemovie(int position){
+        movies.remove(position);
         //Notificamos de un item borrado en nuestra colección
         mAdapter.notifyItemRemoved(position);
 
-    }*/
+    }
 
 }

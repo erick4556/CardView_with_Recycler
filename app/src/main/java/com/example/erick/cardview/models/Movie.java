@@ -1,4 +1,4 @@
-package com.example.erick.cardview;
+package com.example.erick.cardview.models;
 
 public class Movie {
 
